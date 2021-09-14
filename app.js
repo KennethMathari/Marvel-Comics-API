@@ -27,7 +27,8 @@ async function getapi(url) {
             //Loop through the API data array
             for(let i=0;i<data.data.results.length;i++){
                 let element = data.data.results[i];
-                string+='<div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 mb-4"><a href="'+element.urls[0].url+'"> <div class=" max-w-sm rounded overflow-hidden shadow-lg"><img class="w-full" src="'+element.thumbnail.path+'/standard_small.'+element.thumbnail.extension+'" alt="'+element.name+'"><div class="px-6 py-4"><div class="font-bold text-xl mb-2">'+element.name+'</div></div></a></div></div>';
+                //Display Each Character Attributes
+                string+='<div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 mb-4"><a href="'+element.urls[0].url+'" target="_blank"> <div class=" max-w-sm rounded overflow-hidden shadow-lg m-4"><img class="w-full" src="'+element.thumbnail.path+'/standard_small.'+element.thumbnail.extension+'" alt="'+element.name+'"><div class="px-6 py-4"><div class="font-bold text-xl mb-2">'+element.name+'</div></div></a></div></div>';
             }
             string+='</div'
 
