@@ -3,9 +3,9 @@ const api_url = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=edeb
 
 //DOM
 let message= document.getElementById('message');
+let footer= document.getElementById('footer');
 
 async function getapi(url) {
-    
     // Storing response
     const response = await fetch(url)
     .then(function (response){
@@ -18,8 +18,10 @@ async function getapi(url) {
     }).then(function(data){
         // Logs the Marvel Characters API data
             console.log('Marvel Universe Characters:', data);
-            //Display on UI
+            //Display message content on UI
             message.innerHTML='<p>Marvel Universe Characters</p>';
+            //Display footer content on UI
+            footer.innerHTML=data.attributionHTML;
     }).catch(function (error) {
         // Logs any errors
         console.log('Oops! Something went wrong', error);
