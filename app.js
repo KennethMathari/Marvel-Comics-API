@@ -1,13 +1,12 @@
 // Marvel Characters API URL
 const api_url = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=edeb36852f8696cb83c487b2279bf494&hash=4f143c76c354fbfeead772ab3f62a179";
 
-//DOM
+//Variables
 let header= document.getElementById('header');
 let characters=document.getElementById('characters');
 let footer= document.getElementById('footer');
 
 let string='';
-string +='<div class="flex flex-wrap">';
 
 async function getapi(url) {
     // Storing response
@@ -24,11 +23,11 @@ async function getapi(url) {
             console.log('Marvel Universe Characters:', data);
             //Display header content on UI
             header.innerHTML='<div class="bg-red-900 text-center py-4 lg:px-4"><span class="font-semibold mr-2 text-left flex-auto text-white">Marvel Universe Characters</span></div>';
+            string +='<div class="flex flex-wrap pt-5">';
             //Loop through the API data array
             for(let i=0;i<data.data.results.length;i++){
                 let element = data.data.results[i];
-                string+='<div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 mb-4">'+element.name+'</div>';
-
+                string+='<div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 mb-4"><div class=" max-w-sm rounded overflow-hidden shadow-lg"><img class="w-full" src="'+element.thumbnail.path+'/standard_small.'+element.thumbnail.extension+'" alt="'+element.name+'"><div class="px-6 py-4"><div class="font-bold text-xl mb-2">'+element.name+'</div></div></div></div>';
             }
             string+='</div'
 
