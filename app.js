@@ -2,7 +2,7 @@
 const api_url = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=edeb36852f8696cb83c487b2279bf494&hash=4f143c76c354fbfeead772ab3f62a179";
 
 //DOM
-let message= document.getElementById('message');
+let header= document.getElementById('header');
 let footer= document.getElementById('footer');
 
 async function getapi(url) {
@@ -18,10 +18,10 @@ async function getapi(url) {
     }).then(function(data){
         // Logs the Marvel Characters API data
             console.log('Marvel Universe Characters:', data);
-            //Display message content on UI
-            message.innerHTML='<p>Marvel Universe Characters</p>';
+            //Display header content on UI
+            header.innerHTML='<div class="bg-red-900 text-center py-4 lg:px-4"><span class="font-semibold mr-2 text-left flex-auto text-white">Marvel Universe Characters</span></div>';
             //Display footer content on UI
-            footer.innerHTML=data.attributionHTML;
+            footer.innerHTML='<div class="bg-red-900 fixed bottom-0 w-full text-white py-4 lg:px-4">'+data.attributionHTML+'</div>';
     }).catch(function (error) {
         // Logs any errors
         console.log('Oops! Something went wrong', error);
@@ -33,6 +33,4 @@ async function getapi(url) {
 
 //Async function call
 getapi(api_url);
-
-
 
