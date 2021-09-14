@@ -15,10 +15,15 @@ async function getapi(url) {
     }).then(function(data){
         // Logs the Marvel Characters API data
             console.log('Marvel Characters:', data);
-    });
+    }).catch(function (error) {
+        // Logs any errors
+        console.log('Oops! Something went wrong', error);
+      });
     
 }
 
 //Async function call
 getapi(api_url);
+
+
 
