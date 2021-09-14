@@ -35,7 +35,7 @@ async function getapi(url) {
             characters.innerHTML=string;
 
             //Display footer content on UI
-            footer.innerHTML='<div class="bg-red-900 fixed bottom-0 w-full text-white py-4 lg:px-4">'+data.attributionHTML+'</div>';
+            footer.innerHTML='<div class="bg-red-900 fixed bottom-0 w-full text-white py-4 lg:px-4">Made by <a href="https://github.com/KennethMathari">Kenneth Mathari.</a>'+' '+data.attributionHTML+'</div>';
     }).catch(function (error) {
         // Logs any errors
         console.log('Oops! Something went wrong', error);
