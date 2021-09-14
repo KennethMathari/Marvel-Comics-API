@@ -4,15 +4,19 @@ const api_url = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=edeb
 async function getapi(url) {
     
     // Storing response
-    const response = await fetch(url);
+    const response = await fetch(url)
+    .then(function (response){
+        //checks if fetch request was successful
+        if (!response.ok) {
+            throw new Error('HTTP error, status = ' + response.status);
+            }
+        // Returns the response as JSON
+            return response.json();
+    }).then(function(data){
+        // Logs the Marvel Characters API data
+            console.log('Marvel Characters:', data);
+    });
     
-    //Store JSON data
-    let data = await response.json();
-    console.log(data);
-    if (response) {
-        hideloader();
-    }
-    show(data);
 }
 
 //Async function call
