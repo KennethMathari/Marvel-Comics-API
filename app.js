@@ -12,7 +12,7 @@ async function getapi(url) {
     // Storing response
     const response = await fetch(url, {
         headers: {
-            'cache-control': 'max-age=1',
+            'Cache-Control': 'max-age=1',
           },
     })
     .then(function (response){
