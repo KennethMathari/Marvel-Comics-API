@@ -10,7 +10,11 @@ let string='';
 
 async function getapi(url) {
     // Storing response
-    const response = await fetch(url)
+    const response = await fetch(url, {
+        headers: {
+            'cache-control': 'max-age=1',
+          },
+    })
     .then(function (response){
         //checks if fetch request was successful
         if (!response.ok) {
