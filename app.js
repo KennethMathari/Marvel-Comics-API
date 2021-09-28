@@ -58,7 +58,8 @@ const APP={
         navigator.serviceWorker.register('/sw.js',{
             scope:'/'
         }).then(registration =>{
-            
+            //Save reference to registered service worker
+            APP.SW = registration.installing || registration.waiting || registration.active;
         })
       }
       console.log('Service Worker not Supported');
