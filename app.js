@@ -69,6 +69,10 @@ const APP={
         if(navigator.serviceWorker.controller){
             console.log('Service Worker Present')
         }
+        //Check if a new service worker is installed & activated
+        navigator.serviceWorker.oncontrollerchange=(ev)=>{
+            console.log('New service worker is installed & activated');
+        }
       }else{
       console.log('Service Worker not Supported');
       }
