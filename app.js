@@ -65,6 +65,10 @@ const APP={
         })
         //Catch any error
         .catch(err =>console.log('Service Worker Error:'+err));
+        //Check if current page has service worker
+        if(navigator.serviceWorker.controller){
+            console.log('Service Worker Present')
+        }
       }else{
       console.log('Service Worker not Supported');
       }
