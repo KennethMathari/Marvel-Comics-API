@@ -54,7 +54,10 @@ const APP={
   init() {
       //check if Service Worker is Supported
       if('serviceWorker' in navigator){
-          
+
       }
   }
 }
+
+
+document.addEventListener('DOMContentLoaded', APP.init);
