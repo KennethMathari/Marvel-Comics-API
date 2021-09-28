@@ -54,8 +54,14 @@ const APP={
   init() {
       //check if Service Worker is Supported
       if('serviceWorker' in navigator){
-
+        //Register Service Worker
+        navigator.serviceWorker.register('/sw.js',{
+            scope:'/'
+        }).then(registration =>{
+            
+        })
       }
+      console.log('Service Worker not Supported');
   }
 }
 
