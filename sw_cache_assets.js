@@ -49,7 +49,3 @@ self.addEventListener('install', (ev) => {
     ev.respondWith(fetch(ev.request).catch(()=>caches.match(ev.request)));
     
   });
-  
-  self.addEventListener('message', (ev) => {
-    //message from webpage
-  });
