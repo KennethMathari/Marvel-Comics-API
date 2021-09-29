@@ -1,6 +1,26 @@
+const cacheName = 'marvelCachev1';
+
+const cacheAssets =[
+    'app.js',
+    'composer.json',
+    'index.html',
+    'index.php',
+    'sw.js'
+]
+
+
 self.addEventListener('install', (ev) => {
     //service worker is installed.
-    console.log('installed');
+    console.log('Service worker installed');
+
+    ev.waitUntil(
+        caches.open(cacheName)
+        .then(cache => {
+            console.log('caching files');
+            cache.addAll(cacheAssets);
+        })
+        .then(()=>self.skipWaiting())
+    );
   });
   self.addEventListener('activate', (ev) => {
     //service worker is activated
