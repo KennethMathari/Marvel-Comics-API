@@ -46,6 +46,7 @@ self.addEventListener('install', (ev) => {
     //service worker intercepted a fetch call
     console.log('intercepted a http request', ev.request);
     ev.respondWith(fetch(ev.request).catch(()=>caches.match(ev.request)));
+    
   });
   
   self.addEventListener('message', (ev) => {
