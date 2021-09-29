@@ -5,7 +5,8 @@ const cacheAssets =[
     'composer.json',
     'index.html',
     'index.php',
-    'sw.js'
+    'sw_cache_assets.js',
+    'sw_cache_site.js'
 ]
 
 

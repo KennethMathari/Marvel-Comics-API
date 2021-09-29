@@ -55,7 +55,7 @@ const APP={
       //check if Service Worker is Supported
       if('serviceWorker' in navigator){
         //Register Service Worker
-        navigator.serviceWorker.register('/sw_cache_assets.js',{
+        navigator.serviceWorker.register(['/sw_cache_assets.js','/sw_cache_site.js'],{
             scope:'/'
         })
         .then(registration =>{
