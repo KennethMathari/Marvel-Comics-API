@@ -26,11 +26,21 @@ self.addEventListener('install', (ev) => {
   
   self.addEventListener('fetch', (ev) => {
     //service worker intercepted a fetch call
-    console.log('intercepted a http request', ev.request);
-    ev.respondWith(fetch(ev.request).catch(()=>caches.match(ev.request)));
+    console.log('Fetching request', ev.request);
+    ev.respondWith(fetch(ev.request)
+    .then(res =>{
+        //clone response
+        const resClone = res.clone();
+        //open cache
+        caches
+        .open(cacheName)
+        .then(res=>{
+            //add response to cache
+            cache.put(ev.request, resClone)
+        });
+        return res;
+    }).catch(err=>caches.match(ev.request).then(res=>res))
+    );
     
   });
   
-  self.addEventListener('message', (ev) => {
-    //message from webpage
-  });
