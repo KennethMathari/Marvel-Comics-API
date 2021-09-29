@@ -23,6 +23,7 @@ self.addEventListener('install', (ev) => {
         .then(()=>self.skipWaiting())
     );
   });
+
   self.addEventListener('activate', (ev) => {
     //service worker is activated
     console.log('service worker activated');
@@ -44,6 +45,7 @@ self.addEventListener('install', (ev) => {
   self.addEventListener('fetch', (ev) => {
     //service worker intercepted a fetch call
     console.log('intercepted a http request', ev.request);
+    ev.respondWith(fetch(ev.request).catch(()=>caches.match(ev.request)));
   });
   
   self.addEventListener('message', (ev) => {
