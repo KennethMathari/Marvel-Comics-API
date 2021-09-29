@@ -1,13 +1,15 @@
 const cacheName = 'marvelCachev1';
+const api_url = "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=edeb36852f8696cb83c487b2279bf494&hash=4f143c76c354fbfeead772ab3f62a179";
 
-const cacheAssets =[
-    'app.js',
-    'composer.json',
-    'index.html',
-    'index.php',
-    'sw_cache_assets.js',
-    'sw_cache_site.js'
-]
+
+// const cacheAssets =[
+//     'app.js',
+//     'composer.json',
+//     'index.html',
+//     'index.php',
+//     'sw_cache_assets.js',
+//     'sw_cache_site.js'
+// ]
 
 
 self.addEventListener('install', (ev) => {
@@ -15,13 +17,12 @@ self.addEventListener('install', (ev) => {
     console.log('Service worker installed');
 
     ev.waitUntil(
-        caches.open(cacheName)
-        .then(cache => {
-            console.log('caching files');
-            //add files to cache
-            cache.addAll(cacheAssets);
-        })
-        .then(()=>self.skipWaiting())
+        fetch(api_url).then(res => {
+           return res.json();
+          })
+          .then(function(data){
+            console.log('Marvel Universe Characters:', data);
+          })
     );
   });
 
@@ -49,3 +50,4 @@ self.addEventListener('install', (ev) => {
     ev.respondWith(fetch(ev.request).catch(()=>caches.match(ev.request)));
     
   });
+
